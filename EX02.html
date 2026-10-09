@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="products.xsl"?>
+<products>
+    <product>
+        <id>101</id>
+        <name>Laptop</name>
+        <price>55000</price>
+        <quantity>10</quantity>
+    </product>
+    <product>
+        <id>102</id>
+        <name>Smartphone</name>
+        <price>25000</price>
+        <quantity>30</quantity>
+    </product>
+    <product>
+        <id>103</id>
+        <name>Headphones</name>
+        <price>2000</price>
+        <quantity>50</quantity>
+    </product>
+</products>
+
+products.xsl
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Product Information</title>
+        <style>
+          table {
+            border-collapse: collapse;
+            width: 60%;
+            margin: 20px auto;
+          }
+          th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+          }
+          th {
+            background-color: #007bff;
+            color: white;
+          }
+        </style>
+      </head>
+      <body>
+        <h2 style="text-align:center;">Product Information</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price (₹)</th>
+            <th>Quantity</th>
+          </tr>
+          <xsl:for-each select="products/product">
+            <tr>
+              <td><xsl:value-of select="id"/></td>
+              <td><xsl:value-of select="name"/></td>
+              <td><xsl:value-of select="price"/></td>
+              <td><xsl:value-of select="quantity"/></td>
+            </tr>
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
